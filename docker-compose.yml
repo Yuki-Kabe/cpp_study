@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  cpp:
+    build: .
+    container_name: study_cpp
+    volumes:
+      - ./work:/usr/src/app  # ホストのカレントディレクトリをコンテナ内の/usr/src/appにマウント
+    working_dir: /usr/src/app
+    tty: true           # ターミナルを確保（対話型シェル利用のため）
+    stdin_open: true    # 標準入力を開いた状態に
+    command: /bin/bash  # コンテナ起動時にbashシェルを起動
