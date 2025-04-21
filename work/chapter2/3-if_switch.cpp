@@ -6,11 +6,11 @@ int main()
     std::cout << "数値を入力してください。: ";
     std::cin >> x;
 
-    if (0 < x < 11)
+    if (0 < x && x < 11)
     {
         std::cout << "1 ~ 10の値です。: " << x << std::endl;
     }
-    else if (10 < x < 21)
+    else if (10 < x && x < 21)
     {
         std::cout << "11~20の値です。 : " << x << std::endl;
     }
