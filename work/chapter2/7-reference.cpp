@@ -23,5 +23,9 @@ int main()
     const int &const_ref_y = y;
     // const_ref_y = 30; // const参照は値の変更ができない
 
+    // ポインタとの関係
+    int *x_ptr = &x;
+    int &from_pointer_x = *x_ptr;
+
     return 0;
 }

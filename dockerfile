@@ -11,6 +11,7 @@ RUN apt-get update && \
     cmake \
     gdb \
     vim \
+    rapidjson-dev \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

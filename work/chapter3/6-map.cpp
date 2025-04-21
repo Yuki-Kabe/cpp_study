@@ -24,13 +24,25 @@ int main()
 
     /** 要素参照について
      * 次の2パターンあるが、.at()によるアクセスが安全
-     * map["キー"] : 存在しないキーにアクセスすると、新しく要素がデフォルト値で作成されてしまう。
+     * map["キー"] : 存在しないキーにアクセスすると、新しく要素がデフォルト値で作成されてしまうので注意。
      * map.at("キー") : 存在しないキーにアクセスすると、std::out_of_range のポインタが返る
      */
     map["Alice"];               // 18
     unordered_map.at("Thomas"); // 30
     map["key_not_exist"];       // 存在しないキーなので{"key_not_exist", 0}が追加される
     // unordered_map.at("Test"); // これはエラーになる
+
+    /** キーの存在確認
+     * map.count("キー") : 存在する場合は1、存在しない場合は0が返る
+     * map.find("キー") : 存在する場合はその要素のiter、存在しない場合はend()が返る
+     */
+    std::cout << map.count("Alice") << std::endl;          // 1
+    std::cout << map.count("key_not_exist_") << std::endl; // 0
+
+    auto iter = map.find("Alice");
+    std::cout << "Key: " << iter->first << "\tValue: " << iter->second << std::endl;
+    iter = map.find("key_not_exist_"); // end()が返る
+    std::cout << "iter is end: " << (iter == map.end()) << std::endl;
 
     /** 要素の追加と削除
      * map.insert({"キー", 値}) : 指定された値で要素を追加
@@ -56,4 +68,21 @@ int main()
     {
         std::cout << "Key: " << pair_ref.first << "\tValue: " << pair_ref.second << std::endl;
     }
+
+    /** メンバ関数
+     * map.size() : 要素数を取得
+     * map.empty() : 要素が空かどうかを確認
+     * map.clear() : 要素を全て削除
+     */
+
+    // 要素数の取得
+    std::cout << "map.size(): " << map.size() << std::endl;
+
+    // 要素が空かどうかを確認
+    std::cout << "map.empty(): " << map.empty() << std::endl;
+
+    // 要素を全て削除
+    map.clear();
+    std::cout << "map.size(): " << map.size() << std::endl;   // 0
+    std::cout << "map.empty(): " << map.empty() << std::endl; // 1
 }

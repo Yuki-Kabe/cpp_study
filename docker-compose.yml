@@ -3,7 +3,7 @@ version: '3.8'
 services:
   cpp:
     build: .
-    container_name: study_cpp
+    container_name: cpp_study
     volumes:
       - ./work:/usr/src/app  # ホストのカレントディレクトリをコンテナ内の/usr/src/appにマウント
     working_dir: /usr/src/app
